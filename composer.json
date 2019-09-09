@@ -1,0 +1,27 @@
+{
+  "name": "lara-bangla-number",
+  "description": "This package will be helpful for those people who want to convert english numerical number to bangla and bangla to english. It will also provide some basic numerical operation such as \"summation,subtraction.\"",
+  "type": "library",
+  "require": {
+    "php": ">=7"
+  },
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Mahmudul Hasan Zahid (MHZAHID)",
+      "email": "mhzahid01@gmail.com"
+    }
+  ],
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "autoload": {
+    "psr-4": {
+      "larabangla\\": "src/"
+    }
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-master": "dev"
+    }
+  }
+}
