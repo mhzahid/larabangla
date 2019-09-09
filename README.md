@@ -11,7 +11,7 @@
 Go to terminal and run this command
 
 ```shell
-composer require lara-bangla-number
+composer require larabangla/lara-bangla-number
 ```
 
 Wait for few minutes. Composer will automatically install this package for your project.
