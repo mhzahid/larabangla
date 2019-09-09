@@ -1,9 +1,9 @@
 {
-  "name": "lara-bangla-number",
+  "name": "larabangla/lara-bangla-number",
   "description": "This package will be helpful for those people who want to convert english numerical number to bangla and bangla to english. It will also provide some basic numerical operation such as \"summation,subtraction.\"",
   "type": "library",
   "require": {
-    "php": ">=7"
+    "php": ">=7.0"
   },
   "license": "MIT",
   "authors": [
@@ -21,7 +21,7 @@
   },
   "extra": {
     "branch-alias": {
-      "dev-master": "dev"
+      "dev-master": "1.0-dev"
     }
   }
 }
