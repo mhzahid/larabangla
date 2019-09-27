@@ -195,7 +195,7 @@ class gonit
      * in last parameter. If language is not defined by default result will be return in bangla
      * 
      * @param mixed;
-     * @return string;
+     * @return string or numeric;
      * 
      */
     public function sum()
@@ -345,7 +345,7 @@ class gonit
      * in last parameter. If language is not defined by default result will be return in bangla
      * 
      * @param mixed;
-     * @return string;
+     * @return string or numeric;
      * 
      */
     public function sub()
@@ -516,6 +516,82 @@ class gonit
 
 
 
+    /**
+     * 
+     * This function do the division operation.
+     * Accept only numeric value 
+     * Or string numerical type value.
+     * 
+     * user can round up the result by passing round up value in 3rd parameter
+     * user can define return result language type bangla ('bn') or english ('en') in 4th parameter
+     * If language is not defined by default result will be return in bangla
+     * 
+     * @param mixed;
+     * @return string or numeric;
+     * 
+     */
+    public function div($divisible, $divisor, $roundUp = null, $lang = null)
+    {
+        /**
+         * check divisor value. if it is equal to zero(0) then throw exception;
+         */
+        if ($divisor == 0 || $divisor == "০") {
+
+                throw new Exception('Division by zero.');
+                
+        }
+
+
+
+        if ($divisible !== null && $divisor !== null && $divisible >= 0 && $divisor >= 0) {
+
+
+            /**
+             * it convert bangla to english;
+             */
+            $divisible = $this->convertToEN([$divisible]);
+
+            $divisor = $this->convertToEN([$divisor]);
+
+            $roundUp = $this->convertToEN([$roundUp]);
+
+
+
+            /**
+             * calculation function
+             */
+            $fin_div = $this->divHelper($divisible, $divisor, $roundUp);
+
+
+
+            /**
+             * get the user defined return value language
+             */
+            if ($lang == "bn") {
+
+                $bn_div = implode('', $this->convertToBN([$fin_div]));
+                return $bn_div;
+
+            } elseif ($lang == "en") {
+
+                return $fin_div;
+
+            } else {
+
+                $bn_div = implode('', $this->convertToBN([$fin_div]));
+                return $bn_div;
+
+            }
+
+
+        } else {
+
+            throw new Exception("Error ! This function expect at-least two parameter. 0 parameter given in");
+
+        }
+        
+    }
+
 
 
 
@@ -577,5 +653,28 @@ class gonit
 
      }
 
+     private function divHelper($divisible, $divisor, $roundUp = null)
+     {
+         $dbl = (int) $divisible[0];
+         $dvr = (int) $divisor[0];
+         $rd  = (int) $roundUp[0];
+
+         $quotient = ($dbl/$dvr);
+
+         if ($rd !== null && $rd > 0) {
+
+            $rounded_quotient = round($quotient, $rd);
+            return $rounded_quotient;
+
+         } else {
+
+            return $quotient;
+
+         }
+         
+         
+     }
+
 
 }
+
